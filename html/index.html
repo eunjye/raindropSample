@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../resource/css/app.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="../resource/js/lib/jquery.ripples.js"></script>
+	<!-- <script src="../resource/js/main.js"></script> -->
+
+	<title>rain drops example</title>
+
+	<style>
+		.no-wave { position:absolute; z-index:10; width:100%; height:100%; }
+		.rain-area { width:100%; height:100%; background:linear-gradient(45deg, #EF61A8 0%, #01BCC2 100%); pointer-events:none; }
+	</style>
+</head>
+<body>
+
+	<div class="no-wave"></div>
+	<div class="rain-area"></div>
+	
+
+	<script>
+		window.onload = function(){
+			// console.log($('.rain-area'));
+			$('.rain-area').ripples({
+				resolution: 256,
+				perturbance: 0.04
+			});
+			var _x = 0;
+			var _y = 0;
+			var _docW = $(window).outerWidth(); 
+			var _docH = $(window).outerHeight(); 
+			rainDrop();
+			setInterval(rainDrop, 3000);
+
+			function rainDrop(){
+				_x = Math.floor(Math.random() * _docW);
+				_y = Math.floor(Math.random() * _docH);
+
+				var evt = document.createEvent('MouseEvents');
+				evt.initMouseEvent('click', true, true, window, null, _x, _y, 0, 0);
+				var cb = document.elementFromPoint(_x,_y);
+				cb.dispatchEvent(evt);
+
+				$('.rain-area').ripples("drop", _x, _y, 60, 1);
+				console.log(_x,_y);
+			}
+		}
+	</script>
+</body>
+</html>
