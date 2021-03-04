@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../resource/css/app.css">
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+
+	<title>aurora</title>
+
+	<style>
+
+	canvas { width:100%; height:100%; }
+	</style>
+</head>
+<body>
+	
+	<canvas id="canvas"></canvas>
+	
+
+	<script>
+		window.onload = function(){
+			var cvs = document.getElementById('canvas');
+			cvs.width = window.innerWidth;
+			cvs.height = window.innerHeight;
+
+			// ctx.fillStyle = 'rgba(255, 27, 103, 0.252)';
+			// ctx.fillRect(20, 20, 75, 50);
+			// ctx.fillStyle = 'rgba(136, 9, 255, 0.234)';
+			// ctx.fillRect(50, 50, 75, 50);
+			// ctx.fillStyle = 'rgba(255, 25, 9, 0.234)';
+			// ctx.fillRect(80, 80, 75, 50);
+			// ctx.fillStyle = 'rgba(169, 255, 9, 0.534)';
+			// ctx.fillRect(100, 100, 75, 50);
+			
+			var circRad = 100;
+
+			function makeCirc(x, y, dx, dy) {
+				var ctx = cvs.getContext('2d');
+				function drawCirc() {
+					ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+					ctx.fillRect(x, y, 150, 150);
+					ctx.fillStyle = 'rgba(255, 48, 41, 0.4)';
+					ctx.fillRect(x-100, y-120, 170, 220);
+					ctx.filter = 'blur(35px)';
+					ctx.fillStyle = 'rgba(41, 194, 255, 0.4)';
+					if (x < circRad || x > cvs.width - circRad) { 
+								dx=-dx; 
+						}
+						if (y < circRad || y > cvs.width - circRad) { 
+								dy=-dy;
+						}
+						x+=dx;
+						y+=dy;
+						window.requestAnimationFrame(drawCirc);
+				}
+				drawCirc();
+			}
+			makeCirc(400, 300, 2, 2);
+		}
+	</script>
+</body>
+</html>
