@@ -38,22 +38,24 @@
 
 			function makeCirc(x, y, dx, dy) {
 				var ctx = cvs.getContext('2d');
+				var frame = 0;
 				function drawCirc() {
 					ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 					ctx.fillRect(x, y, 150, 150);
 					ctx.fillStyle = 'rgba(255, 48, 41, 0.4)';
-					ctx.fillRect(x-100, y-120, 170, 220);
-					ctx.filter = 'blur(35px)';
+					ctx.fillRect(x-80, y-100, 120, 100);
+					ctx.filter = 'blur(40px)';
 					ctx.fillStyle = 'rgba(41, 194, 255, 0.4)';
 					if (x < circRad || x > cvs.width - circRad) { 
-								dx=-dx; 
-						}
-						if (y < circRad || y > cvs.width - circRad) { 
-								dy=-dy;
-						}
-						x+=dx;
-						y+=dy;
-						window.requestAnimationFrame(drawCirc);
+						dx=-dx; 
+					}
+					if (y < circRad || y > cvs.width - circRad) { 
+						dy=-dy;
+					}
+					x+=dx;
+					y+=dy;
+					
+					window.requestAnimationFrame(drawCirc);
 				}
 				drawCirc();
 			}

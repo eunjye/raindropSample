@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../resource/css/app.css">
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+
+	<title>aurora</title>
+
+	<style>
+		.aurora-wrap { position:relative; width:100%; height:100%; filter:blur(20px); }
+		.auroras { position:absolute; top:50px; left:100px; animation:aniAuroras ease-in-out 20s infinite; }
+		.aurora { position:absolute; border-radius:50%; }
+		.aurora.n1 { top:10px; left:0; width:70px; height:100px; background:rgba(255, 48, 41, 0.25); animation:aniAurora1 ease-in-out 8s infinite; }
+		.aurora.n2 { top:50px; left:60px; width:100px; height:80px; background:rgba(41, 194, 255, 0.25); transform:rotate(45deg); animation:aniAurora2 ease-in-out 15s infinite; }
+		.aurora.n3 { top:80px; left:-30px; width:120px; height:100px; background:rgba(205, 41, 255, 0.25); transform:rotate(-45deg); animation:aniAurora3 ease-in-out 12s infinite; }
+		.aurora.n4 { top:130px; left:40px; width:70px; height:80px; background:rgba(41, 80, 255, 0.25); transform:rotate(35deg); animation:aniAurora2 ease-in-out 15s infinite; animation-delay:5s; }
+		@keyframes aniAuroras {
+			0% { top:0; left:0; }
+			20% { top:20%; left:80%; }
+			50% { top:80%; left:20%; }
+			70% { top:40%; left:0%; }
+			100% { top:0; left:0; }
+		}
+		@keyframes aniAurora1 {
+			0% { transform:scale(1.2) rotate(0deg) translateY(0); }
+			40% { transform:scale(1.5) rotate(35deg) translateY(10px); }
+			60% { transform:scale(1) rotate(35deg); }
+			100% { transform:scale(1.2) rotate(0deg) translateY(0); }
+		}
+
+		@keyframes aniAurora2 {
+			0% { transform:scale(1) rotate(0deg); }
+			30% { transform:scale(1.5) rotate(35deg); }
+			60% { transform:scale(0.9) rotate(35deg); }
+			990% { transform:scale(1.2) rotate(35deg); }
+			100% { transform:scale(1) rotate(0deg); }
+		}
+
+		@keyframes aniAurora3 {
+			0% { transform:scale(0.8) rotate(0deg); }
+			30% { transform:scale(1.5) rotate(35deg); }
+			60% { transform:scale(0.9) rotate(35deg); }
+			990% { transform:scale(1.2) rotate(35deg); }
+			100% { transform:scale(0.8) rotate(0deg); }
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="aurora-wrap">
+		<div class="auroras">
+			<div class="aurora n1"></div>
+			<div class="aurora n2"></div>
+			<div class="aurora n3"></div>
+			<div class="aurora n4"></div>
+		</div>
+	</div>
+	
+</body>
+</html>
